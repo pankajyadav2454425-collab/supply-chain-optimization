@@ -1,0 +1,24 @@
+# Supply Chain Optimization — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core data & computation
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+openpyxl>=3.1.0          # Excel I/O
+
+# Visualisation
+matplotlib>=3.7.0
+
+# Jupyter (optional — for notebooks)
+jupyter>=1.0.0
+ipykernel>=6.25.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Optional — advanced optimisation (uncomment if needed)
+# pulp>=2.7.0              # alternative LP/MILP solver
+# networkx>=3.1            # graph algorithms
+# scikit-learn>=1.3.0      # ML extensions
