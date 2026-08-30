@@ -18,7 +18,14 @@ def _capacity_map(data, orders, demand_total, capacity_multiplier=1.0, disabled_
                 dates = pd.to_datetime(orders["Order Date"], errors="coerce")
                 days = max(1, int((dates.max() - dates.min()).days) + 1)
             for _, r in wc.iterrows():
-                caps[str(r[pcol])] = float(pd.to_numeric(r[ccol], errors="coerce") or 0) * days
+                plant = str(r[pcol]).strip()
+
+                # Only use capacity for plants that actually exist in OrderList
+                if plant in caps:
+                    value = pd.to_numeric(r[ccol], errors="coerce")
+            
+                    if pd.notna(value) and float(value) > 0:
+                        caps[plant] = float(value) * days
     # Fallback capacity from historical order counts with 20% headroom.
     hist = orders.groupby("Plant Code").size().to_dict()
     for p in plants:
