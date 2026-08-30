@@ -34,8 +34,9 @@ def _capacity_map(data, orders, demand_total, capacity_multiplier=1.0, disabled_
         caps[p] *= float(capacity_multiplier)
     if disabled_plant is not None and str(disabled_plant) in caps:
         caps[str(disabled_plant)] = 0.0
-    if sum(caps.values()) < demand_total:
-        scale = demand_total / max(sum(caps.values()), 1e-9)
+    modeled_capacity = sum(caps[p] for p in plants)
+    if modeled_capacity < demand_total:
+        scale = demand_total / max(modeled_capacity, 1e-9)
         # keep infeasibility visible if a plant was deliberately disabled
         if disabled_plant is None:
             caps = {k: v * scale * 1.01 for k, v in caps.items()}
