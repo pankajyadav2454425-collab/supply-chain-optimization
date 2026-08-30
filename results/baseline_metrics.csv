@@ -1,0 +1,2 @@
+total_orders,total_units,total_weight,freight_cost,warehouse_cost,late_penalty,total_cost,late_orders,on_time_rate,avg_tpt,cost_per_order,active_plants,active_carriers
+9215,29513315.0,183117.60052423557,2045011.0948893386,15633221.914766343,2241455.0,19919688.00965568,192,97.91644058600109,1.7177428106348345,2161.6590352312187,7,3
